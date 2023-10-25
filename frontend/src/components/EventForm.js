@@ -61,8 +61,6 @@ export async function Action ({request,params}) {
   const data = await request.formData();
 
 
-  console.log(method);
-
 
   const eventData = {
    title:data.get('title'),
@@ -71,15 +69,13 @@ export async function Action ({request,params}) {
    description:data.get('description'),
   }
 
-  console.log(eventData);
+
 
   let url = 'http://localhost:8080/events';
 
   if (method === 'PATCH') {
-    console.log('iam here');
     const eventId = params.eventid;
     url = 'http://localhost:8080/events/'+eventId;
-    console.log(url);
   }
 
  const response = await fetch(url,{
